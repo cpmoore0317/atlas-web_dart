@@ -31,6 +31,6 @@ class User {
   // Override toString method to return formatted User information
   @override
   String toString() {
-    return "User(id : $id ,name: $name,  age: $age, height: $height)";
+    return "User(id : $id ,name: $name, age: $age, height: $height)";
   }
 }
