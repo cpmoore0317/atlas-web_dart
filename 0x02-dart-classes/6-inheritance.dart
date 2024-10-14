@@ -5,7 +5,7 @@ class User extends Password {
   String name;
   int age;
   double height;
-  Password? _user_password;
+  Password? _user_password; // Private variable to hold the Password object
 
   User({
     required this.id,
@@ -17,16 +17,12 @@ class User extends Password {
     _user_password = Password(password: user_password);
   }
 
-  // Getter for user_password as Password
-  Password? get user_password => _user_password;
+  // Getter for user_password as String
+  String? get user_password => _user_password?.password; // Returns the password string
 
   // Setter for user_password to accept a String and convert it to Password
   set user_password(String? password) {
-    if (password != null) {
-      _user_password = Password(password: password);
-    } else {
-      _user_password = null;
-    }
+    _user_password = Password(password: password); // Directly assign a new Password object
   }
 
   // Convert User to JSON
@@ -36,6 +32,7 @@ class User extends Password {
       'name': name,
       'age': age,
       'height': height,
+      'user_password': _user_password?.password, // Include the password string in JSON
     };
   }
 
