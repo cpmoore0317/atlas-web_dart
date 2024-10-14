@@ -15,8 +15,10 @@ Future<double> calculateTotal() async {
     double total = 0;
     for (String order in orders) {
       String priceData = await fetchProductPrice(order);
-      double price = jsonDecode(priceData);
-      total += price;
+      dynamic price = jsonDecode(priceData);
+
+      // Ensure the price is treated as double
+      total += (price is int) ? price.toDouble() : price;
     }
 
     return total;
