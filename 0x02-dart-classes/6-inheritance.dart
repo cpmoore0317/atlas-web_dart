@@ -25,14 +25,14 @@ class User extends Password {
     _user_password = Password(password: password); // Directly assign a new Password object
   }
 
-  // Convert User to JSON
+  // Convert User to JSON without including the user_password
   Map<String, dynamic> toJson() {
     return {
       'id': id,
       'name': name,
       'age': age,
       'height': height,
-      'user_password': _user_password?.password, // Include the password string in JSON
+      // Removed user_password from JSON representation
     };
   }
 
