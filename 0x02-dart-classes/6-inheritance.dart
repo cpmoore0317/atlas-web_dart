@@ -12,17 +12,21 @@ class User extends Password {
     required this.name,
     required this.age,
     required this.height,
-    String? user_password
+    String? user_password,
   }) : super(password: user_password) {
     _user_password = Password(password: user_password);
   }
 
-  // Getter for user_password
+  // Getter for user_password as Password
   Password? get user_password => _user_password;
 
   // Setter for user_password to accept a String and convert it to Password
   set user_password(String? password) {
-    _user_password = Password(password: password);
+    if (password != null) {
+      _user_password = Password(password: password);
+    } else {
+      _user_password = null;
+    }
   }
 
   // Convert User to JSON
