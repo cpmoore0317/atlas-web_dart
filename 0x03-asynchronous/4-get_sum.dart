@@ -27,9 +27,9 @@ Future<double> calculateTotal() async {
       total += (price is int) ? price.toDouble() : price;
     }
 
-    return total; // Return total as a double
+    return total;
   } catch (error) {
     print('error caught: $error');
-    return -1.0;  // Return -1.0 as a double in case of an error
+    return -1;  // Return -1 as an integer in case of an error
   }
 }
