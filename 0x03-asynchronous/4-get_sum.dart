@@ -9,6 +9,12 @@ Future<double> calculateTotal() async {
 
     // Fetch user's orders based on their ID
     String ordersData = await fetchUserOrders(user['id']);
+    
+    // Check if ordersData is null or empty
+    if (ordersData == null) {
+      throw 'User orders not found';
+    }
+
     List<dynamic> orders = jsonDecode(ordersData);
 
     // Calculate total price of all orders
