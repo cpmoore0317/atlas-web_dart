@@ -5,11 +5,24 @@ class User extends Password {
   String name;
   int age;
   double height;
-  Password? user_password;
+  Password? _user_password;
 
-  User({required this.id, required this.name, required this.age, required this.height, String? user_password})
-      : super(password: user_password) {
-    this.user_password = Password(password: user_password);
+  User({
+    required this.id,
+    required this.name,
+    required this.age,
+    required this.height,
+    String? user_password
+  }) : super(password: user_password) {
+    _user_password = Password(password: user_password);
+  }
+
+  // Getter for user_password
+  Password? get user_password => _user_password;
+
+  // Setter for user_password to accept a String and convert it to Password
+  set user_password(String? password) {
+    _user_password = Password(password: password);
   }
 
   // Convert User to JSON
@@ -35,6 +48,6 @@ class User extends Password {
 
   @override
   String toString() {
-    return 'User(id : $id ,name: $name, age: $age, height: $height, Password: ${user_password?.isValid() ?? false})';
+    return 'User(id : $id ,name: $name, age: $age, height: $height, Password: ${_user_password?.isValid() ?? false})';
   }
 }
